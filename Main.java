@@ -17,18 +17,30 @@ public class Main {
 { "cat", "dog", "red", "is", "am" }
 * Expected Output:"cat", "dog", "red"*/
 
-   /*    String [] dictionary = {"cat","dog","red","is","am"};
-        System.out.println("Original Array:  "+Arrays.toString(dictionary));
+    /*
+      String [] dictionary = {"cat","dog","red","is","am"};
+      System.out.println("Original Array:  "+Arrays.toString(dictionary));
 
-       int longest = dictionary[0].length();
+                int longest = 0;
+                //find the longest word
+                for (String word : dictionary) {
+                    if (word.length() > longest) {
+                        longest = word.length();
+                    }
+                }
+                // store the longest words found
+                String[] longestWords = new String[dictionary.length];
+                int count = 0;
+                for (String word : dictionary) {
+                    if (word.length() == longest) {
+                        longestWords[count++] = word;
+                    }
+                }
 
-        for (String word : dictionary) {
-            if(word.length()>=longest){
-                System.out.print(word + " ");
+                for (int i = 0; i < count; i++) {
+                    System.out.print(longestWords[i]+ " ");}
 
-            }
-        }
-        */
+*/
 
 
 
@@ -141,8 +153,8 @@ the size of the array should be entered by the user.*/
 
        }
 
-   }while(choice!= 5); */
-
+   }while(choice!= 5);
+*/
 
 
 
@@ -298,21 +310,28 @@ public static void klargest (Integer[] array, int k){
     }}
 
     public static void sort (int[] array){
-        for (int i = 0; i < array.length-1; i++) {
-            for (int j = i+1; j < array.length-i-1; j++) {
-                if(array[j] > array[j+1]){
-                    int temp = array[j];
-                    array[j] = array[j+1];
-                    array[j+1] = temp;
-                }
-
-            }
+        int n = array.length;
+        boolean swapped;
+        do {
+               swapped = false;
+                for (int i = 1; i < n; i++) {
+                if (array[i - 1] > array[i]) {
+                  int temp = array[i - 1];
+                  array[i - 1] = array[i];
+                  array[i] = temp;
+                    swapped = true;
+                 }}
+                  n--;
+        } while (swapped);
+        System.out.println("Array sorted!");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
 
         }
-        System.out.println("The Array is sorted: " + Arrays.toString(array));
         System.out.println();
-
     }
+
+
 
 
 
